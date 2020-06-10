@@ -19,16 +19,16 @@
     </head>
 
     <body>
-        <h1>2020 Projected change in GDP</h1>
+        <h1>2020 Mudança projetada no PIB</h1>
         <img id="Share" src="img/share.svg" alt="share">
 
     <div class="flex-container" id="Downloadbanner">
         <button class="toData active" id="G7btn" value="G7" onclick="drawChart(value)">G7</button>
-        <button class="toData" id="OECDbtn" onclick="drawChart(value)" value="OECD">OECD</button>
-        <button class="toData" id="WORLDbtn" onclick="drawChart(value)" value="WORLD">World</button>
+        <button class="toData" id="OECDbtn" onclick="drawChart(value)" value="OECD">OCDE</button>
+        <button class="toData" id="WORLDbtn" onclick="drawChart(value)" value="WORLD">MUNDO</button>
     </div>
         <div id="GDPchart"></div>
-        <div id="source" class="source">Source: <a class="source" href="https://data.oecd.org/gdp/real-gdp-forecast.htm" target="_blank">Real GDP forecast (indicator)</a>. © OECD <a class="source" href="http://www.oecd.org/termsandconditions" target="_blank">Terms & Conditions</a></div>
+        <div id="source" class="source">Fonte: <a class="source" href="https://data.oecd.org/gdp/real-gdp-forecast.htm" target="_blank">Real GDP forecast (indicator)</a>. © OECD <a class="source" href="http://www.oecd.org/termsandconditions" target="_blank">Terms & Conditions</a></div>
         <div id="shareLink">
             <div id="shutterholdertracker">
                 <img id="shuttershare" src="img/cross.svg">
@@ -113,12 +113,12 @@
 
                     var total = parseFloat(k.Value) - parseFloat(d.Value)
                     var countryName=d.Country;
-                    if(d.Country== "China (People's Republic of)")
+                    if(d.Country== "China (República Popular da)")
                         countryName="China"
-                    if (d.Country == "OECD - Total")
-                        countryName = "OECD"
-                    if (d.Country == "Euro area (17 countries)")
-                        countryName = "Euro area"
+                    if (d.Country == "OCDE - Total")
+                        countryName = "OCDE"
+                    if (d.Country == "Área do euro (17 países)")
+                        countryName = "Área do euro"
                     dataPerm.push({ "Country": countryName, "ISO": d.LOCATION, "scenario1":d.Value, "scenario2":k.Value, "diff": diffvalue})
                 }
             })
@@ -267,7 +267,7 @@
                     .duration(100)
                     .style("opacity", 1);
 
-                var htmlText =  "<b>" + d.data.Country + "</b><br/>&nbsp;Single-hit scenario: <b>" + Math.round(d.data.scenario1 * 10) / 10 + "%</b> (change compared to previous period)<br>&nbsp;Double-hit scenario :<b>" + Math.round(d.data.scenario2 * 10) / 10 + "%</b>  (change compared to previous period)"
+                var htmlText =  "<b>" + d.data.Country + "</b><br/>&nbsp;Cenário de surto único: <b>" + Math.round(d.data.scenario1 * 10) / 10 + "%</b> (Alteração em relação ao período anterior)<br>&nbsp;Cenário de segundo surto :<b>" + Math.round(d.data.scenario2 * 10) / 10 + "%</b>  (Alteração em relação ao período anterior)"
 
                 if (event.pageX < width - 75) {
                     divMap.html(htmlText)
@@ -303,9 +303,9 @@
             .attr("dy", "0.32em")
             .text(function (d) { 
                 if (d=="scenario1")
-                    return "Single-hit scenario";
+                    return "Cenário de surto único";
                 else
-                    return "Additional decline in double-hit scenario"});
+                    return "Declínio adicional no cenário de segundo surto"});
     }
 
         d3.select("#Share").on("click", function () {
